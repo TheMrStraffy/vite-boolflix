@@ -1,15 +1,32 @@
+
 <script>
+import { store } from '../data/store';
+import MovieCard from './MovieCard.vue';
 export default {
-  name: "MainApp"
+  components: {store, MovieCard},
+  name: "MainApp",
+  data(){
+    return{
+      store
+    }
+  }
 }
 </script>
 
 <template>
   <div class="container">
-    <h1>MAIN</h1>
+    <div class="row justify-content-evenly">
+
+    <MovieCard 
+    v-if="store.movieSearchString !== ''"
+    :movies="store.searchMovieArray" />
+    <MovieCard 
+    v-else
+    :movies="store.movieTrendArray" />
+
+    </div>
   </div>
 </template>
 
-<style>
-
+<style lang="scss" scoped>
 </style>

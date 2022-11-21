@@ -12,32 +12,43 @@ export default {
     }
   },
   methods: {
-    getMoviesList(){
-      axios.get(store.apiPopularListUrl)
-      .then( result => {
-        store.movieListArray = result.data.results;
-      })
-      .catch(error =>{
-        console.log(error);
-      })
-    },
+    // getMoviesList(){
+    //   axios.get(store.apiPopularListUrl)
+    //   .then( result => {
+    //     store.movieListArray = result.data.results;
+    //   })
+    //   .catch(error =>{
+    //     console.log(error);
+    //   })
+    // },
     getTrendingMovies(){
       axios.get(store.apiTrendingUrl)
       .then( result => {
-        store.movieTrendArray = result.data.results
+        store.movieTrendArray = result.data.results;
+      })
+    },
+    getSearchedMovies(){
+      axios.get(store.apiSearchUrl, {
+        params:{
+          query: store.movieSearchString
+        }
+      })
+      .then( result => {
+        store.searchMovieArray = result.data.results;
       })
     }
   },
   mounted(){
-    this.getMoviesList();
+    // this.getMoviesList();
     this.getTrendingMovies();
+    this.getSearchedMovies();
   }
 }
 </script>
 
 <template>
 
-<HeaderApp/>
+<HeaderApp @getSearchedMovies="getSearchedMovies()" />
 <MainApp/>
   
 </template>
