@@ -15,7 +15,11 @@ export default {
     >
       <div class="details">
         <p>{{movie.title}} <span>{{movie.original_title}}</span></p>
-        <p>{{movie.original_language}} <span>{{movie.vote_average}}</span> </p>
+        <p>
+          <img :src="`node_modules/flag-icons/flags/1x1/${movie.original_language}.svg`" :alt="`${movie.original_language}`">
+          
+          <span>{{movie.vote_average}}</span>
+        </p>
         
       </div>
     </div>
@@ -41,6 +45,11 @@ export default {
     margin-bottom: 0.5rem;
     span{
       font-size: 0.8rem;
+    }
+    img{
+      width: 30px;
+      height: 20px;
+      margin-right: 20px;
     }
   }
 }
