@@ -1,9 +1,25 @@
 <script>
+import StarRating from 'vue-star-rating';
 export default {
   name: "MovieCard",
+  components: {StarRating},
   props:{
     movies: Array,
     title: String
+  },
+  methods: {
+    setRating(rating){
+      this.rating= rating;
+    }
+  },
+  data() {
+    return{
+
+      rating: 10
+    }
+  },
+  mounted(){
+    this.setRating(this.rating);
   }
 }
 </script>
@@ -21,7 +37,16 @@ export default {
         <p>
           <img :src="`node_modules/flag-icons/flags/1x1/${movie.original_language}.svg`" :alt="`${movie.original_language}`">
           
-          <span>{{movie.vote_average}}</span>
+          <span>  
+            <StarRating 
+            v-bind:read-only ="true"
+            v-bind:increment="0.5"
+            v-bind:max-rating="5"
+            
+            v-bind:star-size="15"
+            :rating="movie.vote_average / 2">  </StarRating>
+
+          </span>
         </p>
         
       </div>

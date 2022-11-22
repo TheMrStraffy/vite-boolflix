@@ -3,6 +3,7 @@ import HeaderApp from "./components/HeaderApp.vue";
 import MainApp from "./components/MainApp.vue";
 import axios from "axios";
 import {store} from "./data/store";
+
 export default {
   name: "App",
   components: {HeaderApp, MainApp},

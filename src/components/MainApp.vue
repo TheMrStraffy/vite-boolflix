@@ -4,6 +4,8 @@ import { store } from '../data/store';
 import MovieCard from './MovieCard.vue';
 import TvSeriesCard from './TvSeriesCard.vue';
 
+
+
 export default {
   props:{
     title: String
