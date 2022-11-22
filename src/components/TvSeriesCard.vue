@@ -23,12 +23,12 @@ export default {
 }
 </script>
 <template>
-<h1>Tv Series</h1>
+<h1 class="my-4">Tv Series</h1>
   <div 
   v-for="(movie) in movies" :key="movie.id"
   class="mc-card col-4 mb-3">
     <div class="img-box d-flex align-items-end mb-0"
-    :style="{ backgroundImage: 'url(https://image.tmdb.org/t/p/w342'+`${movie.poster_path}`+')'}"
+    :style="{ backgroundImage: 'url(https://image.tmdb.org/t/p/w342'+`${movie.poster_path}`+ ')'}"
     >
       <div class="details">
         <p>{{movie.name}} <span>{{movie.original_name}}</span></p>
@@ -41,7 +41,7 @@ export default {
             v-bind:increment="0.5"
             v-bind:max-rating="5"
             
-            v-bind:star-size="15"
+            v-bind:star-size="20"
             :rating="movie.vote_average / 2">  </StarRating>
 
           </span>
@@ -59,13 +59,24 @@ export default {
   height: 300px;
   // border: 1px solid black;
 }
+.details{
+  visibility: hidden;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.4s linear;
+}
 .img-box{
+  cursor: pointer;
   height: 100%;
   width: 100%;
   background-size: cover;
-  .details{
+  &:hover .details{
+    visibility: visible;
+    opacity: 1;
+    
     width: 100%;
-    background-color: rgba(179, 179, 179, 0.767);
+    background-color: rgba(68, 68, 68, 0.589);
   }
   p{
     margin-bottom: 0.5rem;

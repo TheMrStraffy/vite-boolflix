@@ -24,8 +24,8 @@ export default {
 }
 </script>
 <template>
-<h1 >{{title}}</h1>
-<h1 v-if="!title">Movies</h1>
+<h1 class="mb-4" v-if="!title">Movies</h1>
+<h1 class="mb-4" v-else>{{title}}</h1>
   <div 
   v-for="(movie) in movies" :key="movie.id"
   class="mc-card col-4 mb-3">
@@ -43,7 +43,7 @@ export default {
             v-bind:increment="0.5"
             v-bind:max-rating="5"
             
-            v-bind:star-size="15"
+            v-bind:star-size="20"
             :rating="movie.vote_average / 2">  </StarRating>
 
           </span>
@@ -61,13 +61,24 @@ export default {
   height: 300px;
   // border: 1px solid black;
 }
+.details{
+  visibility: hidden;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.4s linear;
+}
 .img-box{
+  cursor: pointer;
   height: 100%;
   width: 100%;
   background-size: cover;
-  .details{
+  &:hover .details{
+    visibility: visible;
+    opacity: 1;
+    
     width: 100%;
-    background-color: rgba(179, 179, 179, 0.767);
+    background-color: rgba(68, 68, 68, 0.589);
   }
   p{
     margin-bottom: 0.5rem;
