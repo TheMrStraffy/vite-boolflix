@@ -25,8 +25,8 @@ export default {
     </div>
       <div class="searchBar">
         <input type="text" placeholder="Search a movie"
-        v-model="store.movieSearchString"
-        v-on:keyup.enter="$emit('getSearchedMovies')"
+        v-model.trim="store.movieSearchString"
+        v-on:keyup.enter="$emit('generalSearch')"
         >
       </div>
   </header>

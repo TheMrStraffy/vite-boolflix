@@ -2,8 +2,13 @@
 <script>
 import { store } from '../data/store';
 import MovieCard from './MovieCard.vue';
+import TvSeriesCard from './TvSeriesCard.vue';
+
 export default {
-  components: {store, MovieCard},
+  props:{
+    title: String
+  },
+  components: {store, MovieCard, TvSeriesCard},
   name: "MainApp",
   data(){
     return{
@@ -16,11 +21,15 @@ export default {
 <template>
   <div class="container">
     <div class="row justify-content-evenly">
-
+      
     <MovieCard 
-    v-if="store.movieSearchString !== ''"
+    v-if="store.searchMovieArray.length > 0"
     :movies="store.searchMovieArray" />
-    <MovieCard 
+    <TvSeriesCard
+    v-if="store.tvSeriesArray.length > 0"
+    :movies="store.tvSeriesArray"/>
+
+    <MovieCard title="Trending Movies"
     v-else
     :movies="store.movieTrendArray" />
 

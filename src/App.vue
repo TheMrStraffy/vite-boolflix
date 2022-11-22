@@ -12,23 +12,18 @@ export default {
     }
   },
   methods: {
-    // getMoviesList(){
-    //   axios.get(store.apiPopularListUrl)
-    //   .then( result => {
-    //     store.movieListArray = result.data.results;
-    //   })
-    //   .catch(error =>{
-    //     console.log(error);
-    //   })
-    // },
     getTrendingMovies(){
       axios.get(store.apiTrendingUrl)
       .then( result => {
         store.movieTrendArray = result.data.results;
       })
+      .catch( err =>{
+        console.log(err);
+      })
     },
     getSearchedMovies(){
-      axios.get(store.apiSearchUrl, {
+      store.searchMovieArray = [];
+      axios.get(store.apiSearchUrl , {
         params:{
           query: store.movieSearchString
         }
@@ -36,19 +31,39 @@ export default {
       .then( result => {
         store.searchMovieArray = result.data.results;
       })
+      .catch( err =>{
+        console.log(err);
+      })
+    },
+    getTvSeries(){
+      store.tvSeriesArray = [];
+      axios.get(store.apiTvSeriesUrl , {
+        params:{
+          query: store.movieSearchString
+        }
+      })
+      .then( result => {
+        store.tvSeriesArray = result.data.results;
+      })
+      .catch( err =>{
+        console.log(err);
+      })
+    },
+    generalSearch(){
+      this.getSearchedMovies();
+    this.getTvSeries();
     }
   },
   mounted(){
-    // this.getMoviesList();
     this.getTrendingMovies();
-    this.getSearchedMovies();
+    this.generalSearch();
   }
 }
 </script>
 
 <template>
 
-<HeaderApp @getSearchedMovies="getSearchedMovies()" />
+<HeaderApp @generalSearch="generalSearch" />
 <MainApp/>
   
 </template>

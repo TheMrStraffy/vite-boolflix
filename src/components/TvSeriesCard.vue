@@ -1,15 +1,13 @@
 <script>
 export default {
-  name: "MovieCard",
+  name: "TvSeriesCard",
   props:{
-    movies: Array,
-    title: String
+    movies: Array
   }
 }
 </script>
 <template>
-<h1 >{{title}}</h1>
-<h1 v-if="!title">Movies</h1>
+<h1>Tv Series</h1>
   <div 
   v-for="(movie) in movies" :key="movie.id"
   class="mc-card col-4 mb-3">
@@ -17,7 +15,7 @@ export default {
     :style="{ backgroundImage: 'url(https://image.tmdb.org/t/p/w342'+`${movie.poster_path}`+')'}"
     >
       <div class="details">
-        <p>{{movie.title}} <span>{{movie.original_title}}</span></p>
+        <p>{{movie.name}} <span>{{movie.original_name}}</span></p>
         <p>
           <img :src="`node_modules/flag-icons/flags/1x1/${movie.original_language}.svg`" :alt="`${movie.original_language}`">
           
