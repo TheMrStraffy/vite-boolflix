@@ -74,7 +74,7 @@ export default {
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   &:hover .details{
     visibility: visible;
     opacity: 1;
