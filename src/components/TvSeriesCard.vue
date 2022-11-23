@@ -48,7 +48,7 @@ export default {
 
           </span>
         </p>
-        
+        <p class="overview">Overview: {{movie.overview.slice(0, 150)}}...</p>
       </div>
 
     </div>
@@ -65,6 +65,14 @@ export default {
 .details{
   visibility: hidden;
   color: rgb(0, 0, 0);
+   height: 100%;
+  width: 100%;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.4s linear;
+  .overview{
+  font-size: 0.8rem;
+  }
   font-weight: 600;
   opacity: 0;
   transition: all 0.4s linear;
@@ -81,7 +89,7 @@ export default {
     opacity: 1;
     // height: 100%;
     width: 100%;
-    background-color: rgba(68, 68, 68, 0.589);
+    background-color: rgba(109, 109, 109, 0.849);
   }
   p{
     margin-bottom: 0.5rem;

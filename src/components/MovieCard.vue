@@ -1,6 +1,7 @@
 <script>
 import StarRating from 'vue-star-rating';
 export default {
+  newStr : '',
   name: "MovieCard",
   components: {StarRating},
   props:{
@@ -10,7 +11,8 @@ export default {
   methods: {
     setRating(rating){
       this.rating= rating;
-    }
+    },
+    
   },
   data() {
     return{
@@ -34,9 +36,10 @@ export default {
     >
       <div class="details">
         <p>{{movie.title}} <span>{{movie.title !==  movie.original_title ? movie.original_title : ''}}</span></p>
+        
+
         <p>
           <img :src="`node_modules/flag-icons/flags/1x1/${movie.original_language}.svg`" :alt="`${movie.original_language}`">
-          
           <span>  
             <StarRating 
             v-bind:read-only ="true"
@@ -48,6 +51,7 @@ export default {
 
           </span>
         </p>
+        <p class="overview">Overview: {{movie.overview.slice(0, 150)}}...</p>
         
       </div>
     </div>
@@ -64,9 +68,14 @@ export default {
 .details{
   visibility: hidden;
   color: rgb(0, 0, 0);
+   height: 100%;
+  width: 100%;
   font-weight: 600;
   opacity: 0;
   transition: all 0.4s linear;
+  .overview{
+  font-size: 0.8rem;
+  }
 }
 .img-box{
   cursor: pointer;
@@ -78,9 +87,10 @@ export default {
   &:hover .details{
     visibility: visible;
     opacity: 1;
-    
+    height: 100%;
     width: 100%;
-    background-color: rgba(68, 68, 68, 0.589);
+    background-color: rgba(109, 109, 109, 0.849);
+    
   }
   p{
     margin-bottom: 0.5rem;
@@ -94,4 +104,5 @@ export default {
     }
   }
 }
+
 </style>
