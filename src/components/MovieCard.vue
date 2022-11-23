@@ -30,10 +30,10 @@ export default {
   v-for="(movie) in movies" :key="movie.id"
   class="mc-card col-4 mb-3">
     <div class="img-box d-flex align-items-end mb-0"
-    :style="{ backgroundImage: 'url(https://image.tmdb.org/t/p/w342'+`${movie.poster_path}`+')'}"
+    :style="{backgroundImage : 'url(' + `${movie.poster_path !== null ? 'https://image.tmdb.org/t/p/w342' + movie.poster_path : 'public/imgNotAvailable.jpg'}` + ')' }"
     >
       <div class="details">
-        <p>{{movie.title}} <span>{{movie.original_title}}</span></p>
+        <p>{{movie.title}} <span>{{movie.title !==  movie.original_title ? movie.original_title : ''}}</span></p>
         <p>
           <img :src="`node_modules/flag-icons/flags/1x1/${movie.original_language}.svg`" :alt="`${movie.original_language}`">
           
@@ -72,7 +72,9 @@ export default {
   cursor: pointer;
   height: 100%;
   width: 100%;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   &:hover .details{
     visibility: visible;
     opacity: 1;
