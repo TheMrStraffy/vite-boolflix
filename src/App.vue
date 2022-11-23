@@ -1,6 +1,7 @@
 <script>
 import HeaderApp from "./components/HeaderApp.vue";
 import MainApp from "./components/MainApp.vue";
+
 import axios from "axios";
 import {store} from "./data/store";
 
@@ -13,6 +14,15 @@ export default {
     }
   },
   methods: {
+    getPopularMovies(){
+      axios.get(store.apiPopularUrl)
+      .then(result => {
+        store.popularArray = result.data.results;
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    },
     getTrendingMovies(){
       axios.get(store.apiTrendingUrl)
       .then( result => {
@@ -58,6 +68,7 @@ export default {
   mounted(){
     this.getTrendingMovies();
     this.generalSearch();
+    this.getPopularMovies();
   }
 }
 </script>

@@ -12,6 +12,8 @@ export const store = reactive({
   apiSearchUrl: "https://api.themoviedb.org/3/search/movie/?api_key=4d9a7488239fa09d4d9a883918f9c769",
   apiTrendingUrl: "https://api.themoviedb.org/3/trending/movie/day?api_key=4d9a7488239fa09d4d9a883918f9c769",
   apiTvSeriesUrl: "https://api.themoviedb.org/3/search/tv?api_key=4d9a7488239fa09d4d9a883918f9c769",
+  apiPopularUrl: "https://api.themoviedb.org/3/movie/popular?api_key=4d9a7488239fa09d4d9a883918f9c769&language=en-US&page=1",
+  popularArray: [],
   tvSeriesArray: [],
   movieTrendArray: [],
   searchMovieArray: [],

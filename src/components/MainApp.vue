@@ -3,14 +3,14 @@
 import { store } from '../data/store';
 import MovieCard from './MovieCard.vue';
 import TvSeriesCard from './TvSeriesCard.vue';
-
+import JumbotronAppVue from './JumbotronApp.vue';
 
 
 export default {
   props:{
     title: String
   },
-  components: {store, MovieCard, TvSeriesCard},
+  components: {store, MovieCard, TvSeriesCard, JumbotronAppVue},
   name: "MainApp",
   data(){
     return{
@@ -21,6 +21,11 @@ export default {
 </script>
 
 <template>
+<JumbotronAppVue 
+v-if="(store.searchMovieArray.length && store.tvSeriesArray.length) === 0" 
+v-show="true"
+/>
+
   <div class="container">
     <div class="row justify-content-evenly">
       
